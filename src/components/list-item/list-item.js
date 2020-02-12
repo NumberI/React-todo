@@ -13,15 +13,11 @@ export default class ListItem extends Component {
   //   };
   // }
   onLabelClick = () => {
-    if (this.state.done) {
-      this.setState({
-        done: false
-      });
-    } else {
-      this.setState({
-        done: true
-      });
-    }
+    this.setState(({done}) => {
+      return {
+        done: !done
+      }
+    })
   };
   // constructor() {
   //   super();
@@ -31,15 +27,11 @@ export default class ListItem extends Component {
   // }
 
   onButtonImportantClick = () => {
-    if (this.state.important) {
-      this.setState({
-        important: false
-      });
-    } else {
-      this.setState({
-        important: true
-      });
-    }
+    this.setState((state) => {
+      return {
+        important: !this.state.important
+      }
+    })
   };
   render() {
     const { label } = this.props;
