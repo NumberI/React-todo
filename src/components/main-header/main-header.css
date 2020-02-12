@@ -1,0 +1,14 @@
+.main-header {
+  align-items: flex-end;
+}
+
+.main-header h1 {
+  flex-grow: 1;
+  flex-wrap: nowrap;
+  font-size: 30px;
+}
+
+.main-header h2 {
+  font-size: 1.2rem;
+  color: grey;
+}
