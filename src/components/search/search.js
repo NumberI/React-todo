@@ -1,14 +1,27 @@
-import React from "react";
+import React, { Component } from "react";
 import "./search.css";
 
-const Search = () => {
-  return (
-    <input
-      type="text"
-      className="search form-control"
-      placeholder="Find out..."
-    />
-  );
-};
+export default class Search extends Component {
+  state = {
+    term: ""
+  };
 
-export default Search;
+  onSearchChange = e => {
+    const term = e.target.value;
+    this.setState({
+      term
+    });
+    this.props.onSearchChange(term);
+  };
+  render() {
+    return (
+      <input
+        type="text"
+        className="search form-control"
+        placeholder="Find out..."
+        value={this.state.term}
+        onChange={this.onSearchChange}
+      />
+    );
+  }
+}

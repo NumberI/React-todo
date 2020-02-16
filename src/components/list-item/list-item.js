@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import "./list-item.css";
 
 export default class ListItem extends Component {
-  state = {
-    done: false,
-    important: false
-  };
+  // state = {
+  //   done: false,
+  //   important: false
+  // };
   // constructor() {
   //   super();
   //   this.state = {
@@ -13,11 +13,11 @@ export default class ListItem extends Component {
   //   };
   // }
   onLabelClick = () => {
-    this.setState(({done}) => {
+    this.setState(({ done }) => {
       return {
         done: !done
-      }
-    })
+      };
+    });
   };
   // constructor() {
   //   super();
@@ -27,15 +27,22 @@ export default class ListItem extends Component {
   // }
 
   onButtonImportantClick = () => {
-    this.setState((state) => {
+    this.setState(({ important }) => {
       return {
-        important: !this.state.important
-      }
-    })
+        important: !important
+      };
+    });
   };
+
   render() {
-    const { label } = this.props;
-    const { done, important } = this.state;
+    const {
+      label,
+      onDeleted,
+      onToggleImportant,
+      onToggleDone,
+      done,
+      important
+    } = this.props;
 
     let classNames = "list-item";
     if (done) {
@@ -55,7 +62,7 @@ export default class ListItem extends Component {
         <span
           className="list-item-label"
           // style={color}
-          onClick={this.onLabelClick}
+          onClick={onToggleDone}
         >
           {label}
         </span>
@@ -63,7 +70,7 @@ export default class ListItem extends Component {
         <button
           type="button"
           className="btn btn-outline-success btn-sm float-right"
-          onClick={this.onButtonImportantClick}
+          onClick={onToggleImportant}
         >
           <i className="fa fa-exclamation" />
         </button>
@@ -71,6 +78,7 @@ export default class ListItem extends Component {
         <button
           type="button"
           className="btn btn-outline-danger btn-sm float-right"
+          onClick={onDeleted}
         >
           <i className="fa fa-ambulance" />
         </button>
